@@ -1,0 +1,21 @@
+name: CI
+on:
+  push:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: setup java
+        uses: actions/setup@v5
+        with:
+          node-version: "18"
+      
+      - name: install dependencies
+        run: npm install
+
+      - name: run tests
+        run: npm test
