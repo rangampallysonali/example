@@ -1,21 +1,31 @@
-name: CI
+name: NODE CI
+
 on:
   push:
+  pull_request:
+    branches: [main]
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+     
+    services:
+      mongo:
+        image: mongo:7
+        ports:
+          - 27017:27017
     steps:
-      - name: Checkout repository
+      - name: checkout repository
         uses: actions/checkout@v4
-      
-      - name: setup java
+
+      - name: setup node.js 
         uses: actions/setup-node@v5
         with:
-          node-version: "18"
+          node-version : '22'
       
       - name: install dependencies
         run: npm install
 
       - name: run tests
         run: npm test
+        env:
+          MONGODB_URI: mongodb://localhost:27017
