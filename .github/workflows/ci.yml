@@ -39,3 +39,6 @@ jobs:
           MONGODB_URI: mongodb://localhost:27017
       - name: Build image
         run: docker build -t app.js .
+
+      - name: deploy
+        run: echo "ready to deploy!"
