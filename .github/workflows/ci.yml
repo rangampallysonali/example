@@ -37,3 +37,5 @@ jobs:
         run: npm test
         env:
           MONGODB_URI: mongodb://localhost:27017
+      - name: Build image
+        run: dockerbuild -t app.js
