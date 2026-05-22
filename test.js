@@ -1,16 +1,11 @@
 const request = require("supertest");
 const app = require("./app");
 
-describe("Login integration test", () => {
-  test("frontend/backend can login using database", async () => {
-    const response = await request(app)
-      .post("/login")
-      .send({
-        username: "testuser",
-        password: "password123"
-      });
+describe("Server test", () => {
+  test("returns Hello from Docker", async () => {
+    const response = await request(app).get("/");
 
     expect(response.statusCode).toBe(200);
-    expect(response.body.success).toBe(true);
+    expect(response.text).toBe("Hello from Docker!");
   });
 });

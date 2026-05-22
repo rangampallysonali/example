@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "jest"
+    "test": "npx jest"
+  },
+  "devDependencies": {
+    "jest": "^30.4.1",
+    "supertest": "^7.0.0"
   }
 }
